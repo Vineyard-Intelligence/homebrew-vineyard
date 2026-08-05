@@ -11,6 +11,15 @@ cask "vineyard" do
 
   app "Vineyard.app"
 
+  # Ad-hoc signed (no Developer ID): Homebrew 6 removed both the
+  # no_quarantine DSL and the --no-quarantine option, and the download cache
+  # quarantine still propagates to the installed app via the extraction step.
+  # Strip it at install time so the first launch skips Gatekeeper's "cannot
+  # verify" dialog. (Removable once the app is Developer ID-signed.)
+  postflight do
+    system_command "xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/Vineyard.app"]
+  end
+
   zap trash: [
     "~/Library/Application Support/run.vineyard.desktop",
     "~/Library/Application Support/Vineyard",
