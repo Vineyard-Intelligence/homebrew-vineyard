@@ -1,8 +1,8 @@
 cask "vineyard" do
   version "0.1.0"
-  sha256 "20240e725d042a406246de9bef9834dd281051719e7d5f7258cf2557beafe308"
+  sha256 "6bc6a73ee624acb8e115c08526d5eb756cf276a390d1ff0fc86ef801debfbc07"
 
-  url "https://github.com/whatabeautifulmemory/vineyard-website/releases/download/v#{version}/Vineyard-#{version}-arm64.zip"
+  url "https://github.com/whatabeautifulmemory/vineyard-website/releases/download/v#{version}/Vineyard-#{version}-mac-arm64.zip"
   name "Vineyard"
   desc "CTI/OSINT graph analysis platform"
   homepage "https://vineyard.run/"
