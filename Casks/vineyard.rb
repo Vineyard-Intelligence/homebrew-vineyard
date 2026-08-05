@@ -1,8 +1,13 @@
 cask "vineyard" do
   version "0.1.0"
-  sha256 "6bc6a73ee624acb8e115c08526d5eb756cf276a390d1ff0fc86ef801debfbc07"
+  sha256 "3ac07f2dcfd3462cfbdc0670424554c731402909ab9c7064468caeaaf3887cf3"
 
-  url "https://github.com/whatabeautifulmemory/vineyard-website/releases/download/v#{version}/Vineyard-#{version}-mac-arm64.zip"
+  # Version-agnostic: releases always upload the same Vineyard-mac-arm64.zip,
+  # so latest/download serves the newest build. `version` above still drives
+  # brew's upgrade detection; bump it and this sha256 on each release.
+  # rubocop:disable Cask/Url -- binary release asset, not a source tarball
+  url "https://github.com/whatabeautifulmemory/vineyard-website/releases/latest/download/Vineyard-mac-arm64.zip"
+  # rubocop:enable Cask/Url
   name "Vineyard"
   desc "CTI/OSINT graph analysis platform"
   homepage "https://vineyard.run/"
