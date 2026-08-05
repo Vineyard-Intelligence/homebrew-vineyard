@@ -11,6 +11,10 @@ cask "vineyard" do
 
   app "Vineyard.app"
 
+  # Ad-hoc signed (no Developer ID): keep quarantine OFF at install so the
+  # first launch does not hit Gatekeeper's "cannot verify" dialog.
+  no_quarantine true
+
   zap trash: [
     "~/Library/Application Support/run.vineyard.desktop",
     "~/Library/Application Support/Vineyard",
