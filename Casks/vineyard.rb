@@ -7,7 +7,6 @@ cask "vineyard" do
   # brew's upgrade detection; bump it and this sha256 on each release.
   # rubocop:disable Cask/Url -- binary release asset, not a source tarball
   url "https://github.com/whatabeautifulmemory/vineyard-website/releases/latest/download/Vineyard-mac-arm64.zip"
-  # rubocop:enable Cask/Url
   name "Vineyard"
   desc "CTI/OSINT graph analysis platform"
   homepage "https://vineyard.run/"
