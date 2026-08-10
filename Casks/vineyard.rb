@@ -1,6 +1,6 @@
 cask "vineyard" do
   version "0.1.0"
-  sha256 "62c8015232608487ec4f74a8d9d0c806fb7f23352ed3336d98de64ae8334fe2d"
+  sha256 "fd4c95ab335842cc8aa9bc877d1054c534a392269a0cd7e4d867f91732b708eb"
 
   # Version-agnostic: releases always upload the same Vineyard-mac-arm64.zip,
   # so latest/download serves the newest build. `version` above still drives
