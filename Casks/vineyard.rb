@@ -1,31 +1,31 @@
 cask "vineyard" do
-  version "0.1.0"
+  version "0.2.0"
 
-  # NO CHECKSUM, because there is nothing stable to check one against.
+  # VERSION, TAGGED URL AND CHECKSUM, all three, and release.sh writes all three.
   #
-  # The url below points at `releases/latest/download`, which by design serves
-  # whatever was built most recently — the release is overwritten in place under
-  # one version rather than tagged anew each time. A pinned sha256 describes ONE
-  # build, so every rebuild made this file wrong for anyone who had not pulled
-  # the tap in the same breath. That is not hypothetical: `brew reinstall` failed
-  # with "Cask reports different checksum" against a tap two commits behind, and
-  # it would have done so after every release.
+  # This file spent a while pinning no checksum, for a reason that was true then:
+  # the url pointed at `releases/latest/download` and the release was overwritten
+  # in place under one version, so a pinned hash described one build and was wrong
+  # for every tap that had not pulled in the same breath. `brew reinstall` failed
+  # with "Cask reports different checksum" against a tap two commits behind.
   #
-  # Two ways out. Bump `version` per release and pin the url to that tag, which
-  # restores both upgrade detection and integrity — rejected, because the release
-  # is deliberately overwritten rather than versioned. Or stop pinning a hash to
-  # a moving target, which is this. The trade is real and worth naming: download
-  # verification now rests on HTTPS and GitHub serving the right asset, with no
-  # second opinion from this file.
+  # The note here called the alternative — bump the version per release and pin
+  # the url to that tag — and rejected it, because the release was deliberately
+  # overwritten. That premise is gone: overwriting one tag produced a DRAFT
+  # release that `releases/latest` silently skipped, so every installer served an
+  # eleven-day-old build while each release reported success. Releases are now
+  # versioned and never deleted, which makes the bytes behind the url below
+  # immutable — so the hash can be pinned, and `brew upgrade` has a version to
+  # compare. Both are things the moving target cost.
   #
-  # `version` stays for identity and the Caskroom path. It does NOT drive upgrade
-  # detection any more — it never really did, since it does not change — so a new
-  # build is picked up by `brew reinstall --cask vineyard`, not `brew upgrade`.
+  # Do not hand-edit these three lines; release.sh rewrites them by keyword at the
+  # start of the line, and verifies afterwards that the cask names the bytes it
+  # just published.
   #
   # (brew style flags the release-asset URL as "use tarballs" — that rule is
   # for source distributions; a binary app ships as a release asset.)
-  sha256 :no_check
-  url "https://github.com/whatabeautifulmemory/vineyard-website/releases/latest/download/Vineyard-mac-arm64.zip"
+  sha256 "14709b425d0714ef710db3558c80ea576ec261967563d6675bf79cc88d49f250"
+  url "https://github.com/whatabeautifulmemory/vineyard-website/releases/download/v0.2.0/Vineyard-mac-arm64.zip"
   name "Vineyard"
   desc "CTI/OSINT graph analysis platform"
   homepage "https://vineyard.run/"
