@@ -1,5 +1,5 @@
 cask "vineyard" do
-  version "0.4.22"
+  version "0.4.23"
 
   # VERSION, TAGGED URL AND CHECKSUM, all three, and release.sh writes all three.
   #
@@ -24,8 +24,8 @@ cask "vineyard" do
   #
   # (brew style flags the release-asset URL as "use tarballs" — that rule is
   # for source distributions; a binary app ships as a release asset.)
-  sha256 "83ff13475aa92753a286aa3bafe8822a31f90fbbc266db875e2758ace1436e5c"
-  url "https://github.com/whatabeautifulmemory/vineyard-website/releases/download/v0.4.22/Vineyard-mac-arm64.zip"
+  sha256 "7c0043a24f0b554e296d184214bc34e29ad6729428437b069c972aad02b2b35d"
+  url "https://github.com/whatabeautifulmemory/vineyard-website/releases/download/v0.4.23/Vineyard-mac-arm64.zip"
   name "Vineyard"
   desc "CTI/OSINT graph analysis platform"
   homepage "https://vineyard.run/"
