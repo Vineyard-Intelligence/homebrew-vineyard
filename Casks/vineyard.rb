@@ -39,8 +39,12 @@ cask "vineyard" do
   # quarantine still propagates to the installed app via the extraction step.
   # Strip it at install time so the first launch skips Gatekeeper's "cannot
   # verify" dialog. (Removable once the app is Developer ID-signed.)
-  postflight do
-    system_command "xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/Vineyard.app"]
+  #
+  # postflight_steps, not a `postflight do` Ruby block: Homebrew 7 deprecates the
+  # Ruby flight blocks for taps. {{appdir}} is expanded at install time, and
+  # must_succeed: false keeps an install whose app carries no quarantine from failing.
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Vineyard.app"], must_succeed: false
   end
 
   zap trash: [
